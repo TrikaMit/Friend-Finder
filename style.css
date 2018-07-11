@@ -1,0 +1,32 @@
+/* font-family: 'Galada', cursive;
+font-family: 'Libre Franklin', sans-serif; */
+/* font-family: 'Lobster', cursive; */
+body{
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+.jumbotron-fluid{
+    padding: 10px;
+    font-family: 'Lobster', cursive;
+    text-align: center;
+    background: #dece9c44;
+    color: #da9f96; 
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.295) ;
+    text-shadow: 1px 1px 4px #ffffff;
+}
+
+#tagone{
+    color: #dcb699;
+}
+
+#tagtwo{
+    color: #dcb6998f;
+}
+
+label.form-check-label{
+    padding: 10px;
+}
+
+input.form-check-input{
+    margin-left: 1rem !important;
+}
