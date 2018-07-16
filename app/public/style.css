@@ -67,6 +67,7 @@ button.submit{
 .fa-arrow-circle-o-right:before {
     content: "\f18e";
     font-size: 150px;
+    color: #da9f96; 
 }
 
 @media only screen and (max-width: 768px) {
@@ -86,6 +87,5 @@ button.submit{
     #homeContainer{
         width:75%;
     }
-    
 
 } 

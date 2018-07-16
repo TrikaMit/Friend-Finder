@@ -1,5 +1,5 @@
-var total = 0;
 var Friends = [
+    total = 0,
     Monica = {
         "name": "Monica",
         "photo": "./images/Monica.png",
@@ -21,7 +21,7 @@ var Friends = [
                 this.total += this.scores[i];
             };
             return(this.total);
-        }
+        },
     },
     Joey = {
         "name": "Joey",
@@ -141,8 +141,6 @@ var Friends = [
     }
 ]
 
-var allScores = Friends.map(function getScores(entry) { 
-    return entry.sumScore() 
-})
-console.log(allScores);
+console.log(Friends);
+module.exports = Friends;
 
