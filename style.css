@@ -7,17 +7,16 @@ body{
 }
 .question{
     font-family: 'Lobster', cursive;
+    color: #da9f96; 
 }
 
-.jumbotron-fluid{
+#myJumbo{
     padding: 10px;
     font-family: 'Lobster', cursive;
     text-align: center;
     background: #ffffff;
     color: #da9f96; 
-    box-shadow: 10px 5px 10px 0px #da9f96; 
-}
-.display-3{
+    box-shadow: 2px 2px 5px 0px #da9f96; 
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.502);
 }
 
@@ -37,9 +36,6 @@ input.form-check-input{
     margin-left: 1rem !important;
 }
 
-.question{
-    color: #da9f96; 
-}
 #questionBox{
     margin: 50px auto;
     width: 50%;
@@ -55,8 +51,41 @@ button.submit{
     background:#da9f96; 
 }
 
+#myHomeJumbo{
+    padding-top: 100px;
+    font-family: 'Lobster', cursive;
+    text-align: center;
+    background: #ffffff;
+    color: #da9f96; 
+}
+#frontBox{
+    padding-top: 100px;
+}
+#frontOne{
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.502);
+}
+.fa-arrow-circle-o-right:before {
+    content: "\f18e";
+    font-size: 150px;
+}
+
 @media only screen and (max-width: 768px) {
     #questionBox{
         width:100%;
     }
+    .display-3{
+        padding-top:10px;
+        font-size:3rem !important;
+    }
+    .display-1{
+        font-size:2rem !important;
+    }
+    #myHomeJumbo{
+        text-align:center;
+    }
+    #homeContainer{
+        width:75%;
+    }
+    
+
 } 
