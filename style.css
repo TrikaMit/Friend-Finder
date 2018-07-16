@@ -3,16 +3,22 @@ font-family: 'Libre Franklin', sans-serif; */
 /* font-family: 'Lobster', cursive; */
 body{
     font-family: 'Libre Franklin', sans-serif;
+
+}
+.question{
+    font-family: 'Lobster', cursive;
 }
 
 .jumbotron-fluid{
     padding: 10px;
     font-family: 'Lobster', cursive;
     text-align: center;
-    background: #dece9c44;
+    background: #ffffff;
     color: #da9f96; 
-    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.295) ;
-    text-shadow: 1px 1px 4px #ffffff;
+    box-shadow: 10px 5px 10px 0px #da9f96; 
+}
+.display-3{
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.502);
 }
 
 #tagone{
@@ -20,7 +26,7 @@ body{
 }
 
 #tagtwo{
-    color: #dcb6998f;
+    color: #dcb699b5;
 }
 
 label.form-check-label{
@@ -30,3 +36,27 @@ label.form-check-label{
 input.form-check-input{
     margin-left: 1rem !important;
 }
+
+.question{
+    color: #da9f96; 
+}
+#questionBox{
+    margin: 50px auto;
+    width: 50%;
+    padding: 10px;
+    text-shadow: 1px 1px 4px #ffffff;
+    background: white;
+    /* border: 2px solid #da9f96;  */
+    box-shadow: 0px 0px 10px 5px #da9f96; 
+}
+
+
+button.submit{
+    background:#da9f96; 
+}
+
+@media only screen and (max-width: 768px) {
+    #questionBox{
+        width:100%;
+    }
+} 
