@@ -1,6 +1,6 @@
 # Friend-Finder
-##Discover your Best Friend with Friend Finder
-###Instructions
+## Discover your Best Friend with Friend Finder
+### Instructions
 Simply click the following link to access Friend Finder:
 https://polar-anchorage-13148.herokuapp.com/
 
