@@ -1,7 +1,7 @@
 var Friends = [
     Monica = {
         "name": "Monica",
-        "photo": "./images/Monica.png",
+        "photo": "https://vignette.wikia.nocookie.net/friends/images/2/2f/Monica_Geller-Bing_Season_10.png/revision/latest?cb=20180426182234",
         "scores": [
             5,
             5,
@@ -24,7 +24,7 @@ var Friends = [
     },
     Joey = {
         "name": "Joey",
-        "photo": "./images/Joey.jpg",
+        "photo": "https://vignette.wikia.nocookie.net/friends/images/f/f5/JoeyTribbiani.jpg/revision/latest/scale-to-width-down/699?cb=20180424154245",
         "scores": [
             1,
             1,
@@ -40,7 +40,7 @@ var Friends = [
     },
     Chandler = {
         "name": "Chandler",
-        "photo": "./images/Chandler.png",
+        "photo": "https://vignette.wikia.nocookie.net/friends/images/2/21/2473459498_a3b4e40781.jpg/revision/latest?cb=20100601130820",
         "scores": [
             1,
             1,
@@ -56,7 +56,7 @@ var Friends = [
     },
     Rachel = {
         "name": "Rachel",
-        "photo": "./images/Rachel.png",
+        "photo": "https://vignette.wikia.nocookie.net/friends/images/3/38/RachelGreen.jpg/revision/latest?cb=20180426182043",
         "scores": [
             1,
             3,
@@ -72,7 +72,7 @@ var Friends = [
     },
     Phoebe = {
         "name": "Phoebe",
-        "photo": "./images/Phoebe.jpg",
+        "photo": "https://vignette.wikia.nocookie.net/friends/images/3/30/PhoebeBuffay.jpg/revision/latest?cb=20180426182547",
         "scores": [
             1,
             1,
@@ -88,7 +88,7 @@ var Friends = [
     },
     Ross = {
         "name": "Ross",
-        "photo": "./images/Ross.jpg",
+        "photo": "https://vignette.wikia.nocookie.net/friends/images/0/0b/RossGeller.jpg/revision/latest?cb=20180424154547",
         "scores": [
             1,
             4,

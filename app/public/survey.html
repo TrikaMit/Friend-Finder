@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css?family=Galada|Libre+Franklin|Lobster" rel="stylesheet">
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -151,6 +150,44 @@
         <button type="submit" class="btn btn-lg btn-light submit">Submit</button>
     </div>
 
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="Match" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Friend Finder Result</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" id="closeBtn" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="myModalError" tabindex="-1" role="dialog" aria-labelledby="Error" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Friend Finder</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Please answer all questions to discover your friend match.
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" id="OKBtn" data-dismiss="modal">OK</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
     <footer class="footer">
         <div class="container">
             <p>
@@ -159,11 +196,12 @@
             </p>
         </div>
     </footer>
-
 </body>
 
 </html>
 <script type="text/javascript">
+$('#myModal').modal('hide')
+$('#myModalError').modal('hide');
     var answerArray = [];
     var friendCompareArray = [];
     var allFriendScores = [];
@@ -191,10 +229,11 @@
         }
 
         $.post("/api/friends", newFriend, function (data) {
-            if (answerArray.includes(undefined) ||
+            if ($('input[type=radio]:checked').length < 9||
                 $('#friendName').val().trim() === "" ||
                 $('#friendPhoto').val().trim() === "") {
                 console.log("not all Qs answered");
+                $('#myModalError').modal('show');
             } else {
                 console.log("all Q's answered");
                 console.log(newFriend);
@@ -222,8 +261,16 @@
                     console.log(data[i].scores);
                     friendCompare(newFriend, data[i])
                     console.log(`all differences: ${allFriendScores}`);
-                    var bestFriend = allFriendScores.indexOf(Math.min.apply(Math,allFriendScores));
-                    console.log(data[bestFriend]);
+                    var bestFriendNumb = allFriendScores.indexOf(Math.min.apply(Math,allFriendScores));
+                    bestFriend = data[bestFriendNumb];
+                    $('.modal-body').text(`Your friend match is ${bestFriend.name}`);
+                    var img = $(`<img src=${bestFriend.photo} class='img-fluid'>`);
+                    $('.modal-body').append(img);
+                    $('#myModal').modal('show');
+                    $('#closeBtn').on('click',function(){
+                        location.reload();
+                    })
+
                 }
             });
         var friendCompare =
@@ -242,4 +289,6 @@
                         allFriendScores.push(total);
             }
     }
+
+
 </script>
