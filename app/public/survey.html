@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css?family=Galada|Libre+Franklin|Lobster" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -21,6 +25,18 @@
 
     <div class="container-fluid" id="questionBox">
         <div id="questions">
+            <div class="form-group">
+                <label class="question" for="friendName">
+                    <h4>Name</h4>
+                </label>
+                <input type="text" class="form-control" name="" id="friendName" placeholder="" required>
+            </div>
+            <div class="form-group">
+                <label class="question" for="friendPhoto">
+                    <h4>Photo</h4>
+                </label>
+                <input type="text" class="form-control" name="" id="friendPhoto" placeholder="" required>
+            </div>
             <div class="form-check form-check-inline">
                 <label class="form-check-label ">
                     <h4 class="question">I like to cook.</h4>
@@ -135,17 +151,95 @@
         <button type="submit" class="btn btn-lg btn-light submit">Submit</button>
     </div>
 
+    <footer class="footer">
+        <div class="container">
+            <p>
+                <a href="/api/friends" class="footer" target="_blank">API Friends Link</a> |
+                <a href="https://github.com/TrikaMit/Friend-Finder" class="footer" target="_blank">GitHub Repo</a>
+            </p>
+        </div>
+    </footer>
 
-
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="./server.js"></script>
 </body>
 
 </html>
+<script type="text/javascript">
+    var answerArray = [];
+    var friendCompareArray = [];
+    var allFriendScores = [];
+
+    $('.submit').on('click', function (event) {
+        event.preventDefault();
+
+        var qOne = ($('input[name="one"]:checked').val());
+        var qTwo = ($('input[name="two"]:checked').val());
+        var qThree = ($('input[name="three"]:checked').val());
+        var qFour = ($('input[name="four"]:checked').val());
+        var qFive = ($('input[name="five"]:checked').val());
+        var qSix = ($('input[name="six"]:checked').val());
+        var qSeven = ($('input[name="seven"]:checked').val());
+        var qEight = ($('input[name="eight"]:checked').val());
+        var qNine = ($('input[name="nine"]:checked').val());
+        var qTen = ($('input[name="ten"]:checked').val());
+        answerArray.push(qOne, qTwo, qThree, qFour, qFive, qSix, qSeven, qEight, qNine, qTen);
+        console.log(answerArray);
+
+        var newFriend = {
+            "name": $('#friendName').val().trim(),
+            "photo": $('#friendPhoto').val().trim(),
+            "scores": answerArray
+        }
+
+        $.post("/api/friends", newFriend, function (data) {
+            if (answerArray.includes(undefined) ||
+                $('#friendName').val().trim() === "" ||
+                $('#friendPhoto').val().trim() === "") {
+                console.log("not all Qs answered");
+            } else {
+                console.log("all Q's answered");
+                console.log(newFriend);
+                findFriend(newFriend);
+                answerArray = [];
+                console.log(friendCompareArray);
+            }
+        });
+        answerArray = [];
+    })
+
+    var findFriend = (newFriend) => {
+        var currentURL = window.location.origin;
+        console.log(currentURL);
+
+        $.ajax({
+                url: currentURL + "/api/friends",
+                method: "GET"
+            })
+            .then(function (data) {
+                console.log(currentURL + "/api/friends");
+                console.log(data);
+                for (var i = 0; i < 6; i++) {
+                    console.log(data[i]);
+                    console.log(data[i].scores);
+                    friendCompare(newFriend, data[i])
+                    console.log(`all differences: ${allFriendScores}`);
+                    var bestFriend = allFriendScores.indexOf(Math.min.apply(Math,allFriendScores));
+                    console.log(data[bestFriend]);
+                }
+            });
+        var friendCompare =
+            (newFriend, Friend) => {
+                var total = 0;
+                var friendSumArray = [];
+                for (var i = 0; i < 10; i++) {
+                    var friendDiffIt = Math.abs(newFriend.scores[i] - Friend.scores[i]);
+                    friendSumArray.push(friendDiffIt);
+                }
+                        for (var j = 0; j < friendSumArray.length; j++) {
+                            total += friendSumArray[j];
+                        };
+                        console.log (friendSumArray);
+                        console.log(total);
+                        allFriendScores.push(total);
+            }
+    }
+</script>

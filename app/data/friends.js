@@ -1,5 +1,4 @@
 var Friends = [
-    total = 0,
     Monica = {
         "name": "Monica",
         "photo": "./images/Monica.png",
@@ -15,13 +14,13 @@ var Friends = [
             1,
             5
         ],
-        "sumScore": function (){
-            this.total=0;
-            for (var i = 0; i < this.scores.length; i++) {
-                this.total += this.scores[i];
-            };
-            return(this.total);
-        },
+        // "sumScore": function (){
+        //     this.total=0;
+        //     for (var i = 0; i < this.scores.length; i++) {
+        //         this.total += this.scores[i];
+        //     };
+        //     return(this.total);
+        // },
     },
     Joey = {
         "name": "Joey",
@@ -37,15 +36,7 @@ var Friends = [
             1,
             5,
             1 
-        ],
-        "sumScore": function (){
-            this.total=0;
-            for (var i = 0; i < this.scores.length; i++) {
-                this.total += this.scores[i];
-            };
-            return(this.total);
-        }
-        
+        ] 
     },
     Chandler = {
         "name": "Chandler",
@@ -61,14 +52,7 @@ var Friends = [
             1,
             1,
             1
-        ],
-        "sumScore": function (){
-            this.total=0;
-            for (var i = 0; i < this.scores.length; i++) {
-                this.total += this.scores[i];
-            };
-            return(this.total);
-        }
+        ]
     },
     Rachel = {
         "name": "Rachel",
@@ -84,14 +68,7 @@ var Friends = [
             4,
             1,
             1
-        ],
-        "sumScore": function (){
-            this.total=0;
-            for (var i = 0; i < this.scores.length; i++) {
-                this.total += this.scores[i];
-            };
-            return(this.total);
-        }
+        ]
     },
     Phoebe = {
         "name": "Phoebe",
@@ -107,18 +84,11 @@ var Friends = [
             5,
             5,
             1
-        ],
-        "sumScore": function (){
-            this.total=0;
-            for (var i = 0; i < this.scores.length; i++) {
-                this.total += this.scores[i];
-            };
-            return(this.total);
-        }
+        ]
     },
     Ross = {
-        "name": "Rachel",
-        "photo": "./images/Rachel.png",
+        "name": "Ross",
+        "photo": "./images/Ross.jpg",
         "scores": [
             1,
             4,
@@ -130,14 +100,7 @@ var Friends = [
             1,
             1,
             4
-        ],
-        "sumScore": function (){
-            this.total=0;
-            for (var i = 0; i < this.scores.length; i++) {
-                this.total += this.scores[i];
-            };
-            return(this.total);
-        }
+        ]
     }
 ]
 

@@ -69,6 +69,13 @@ button.submit{
     font-size: 150px;
     color: #da9f96; 
 }
+a.footer{
+    color: #da9f96; 
+}
+a.footer:hover{
+    color: #da9f96; 
+    letter-spacing: 0.25rem;
+}
 
 @media only screen and (max-width: 768px) {
     #questionBox{
