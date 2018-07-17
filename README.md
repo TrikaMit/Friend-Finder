@@ -2,6 +2,7 @@
 ##Discover your Best Friend with Friend Finder
 ###Instructions
 Simply click the following link to access Friend Finder:
+https://polar-anchorage-13148.herokuapp.com/
 
 Once on the home page, click the arrow to navigate to the survey.
 
